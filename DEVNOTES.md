@@ -5,6 +5,18 @@ Interactive ribbon burner forge design application that generates comprehensive 
 
 ## Version History
 
+### v1.2 (2026-02-14)
+- Added README.md with comprehensive documentation
+- Added cross-platform launcher scripts:
+  - `mac-linux.sh` for Linux/macOS
+  - `windows-run.bat` for Windows
+- Added `requirements.txt` for pip
+- Fixed piping schematic in assembly overview:
+  - Moved propane tank to rear (right of blower)
+  - Routed gas line UP and OVER the blower (not through it)
+  - Fixed 90° elbow geometry (squared corners)
+  - Removed misleading door from side-view schematic
+
 ### v1.1 (2026-02-14)
 - Improved diagram style to architectural/engineering standard:
   - Added proper dimension lines with extension lines and arrows
@@ -31,11 +43,15 @@ Interactive ribbon burner forge design application that generates comprehensive 
 ## File Structure
 ```
 ~/Projects/Forge/
-├── ForgeDesigner.py           # Main application (use this one)
-├── generate_forge_pdf.py      # Original static PDF generator (reference)
+├── ForgeDesigner.py              # Main application (use this one)
+├── mac-linux.sh                  # Launcher for Linux/macOS
+├── windows-run.bat               # Launcher for Windows
+├── requirements.txt              # pip dependencies
+├── README.md                     # User documentation
+├── DEVNOTES.md                   # This file
+├── generate_forge_pdf.py         # Original static PDF generator (reference)
 ├── New_Forge_Build_Generator.py  # Original dynamic calculator (reference)
-├── DEVNOTES.md                # This file
-└── Forge_Build_Guide_*ci.pdf  # Generated output files
+└── Forge_Build_Guide_*ci.pdf     # Generated output files
 ```
 
 ## Engineering Formulas
