@@ -5,6 +5,21 @@ Interactive Forge Designer v1.0
 A comprehensive ribbon burner forge design tool that generates complete
 PDF build guides based on user-specified chamber dimensions.
 
+!!! DANGER - IMPORTANT SAFETY DISCLAIMER !!!
+============================================
+Building and operating a forced air ribbon burner forge is EXTREMELY DANGEROUS
+and can result in serious injury or death. Risks include but are not limited to:
+fire, explosion, severe burns, carbon monoxide poisoning, and toxic fume exposure.
+
+DO NOT attempt to build or operate a forge unless you are qualified, have done
+your own independent research, and have verified the safety of your construction
+and operating procedures.
+
+THE CREATOR OF THIS SCRIPT ACCEPTS NO RESPONSIBILITY FOR ANY INJURIES, DEATHS,
+PROPERTY DAMAGE, OR OTHER LOSSES RESULTING FROM THE USE OF THIS TOOL OR ANY
+FORGE BUILT USING INFORMATION IT PROVIDES. USE ENTIRELY AT YOUR OWN RISK.
+============================================
+
 Merges dynamic calculations with full documentation including:
 - Safety procedures
 - Complete BOM with calculated quantities
@@ -74,11 +89,29 @@ def debug_log(msg):
 # USER INPUT MODULE
 # =============================================================================
 
+# Safety disclaimer text (used in CLI and PDF)
+SAFETY_DISCLAIMER = """
+!!! DANGER - IMPORTANT SAFETY DISCLAIMER !!!
+
+Building and operating a forced air ribbon burner forge is EXTREMELY
+DANGEROUS and can result in serious injury or death. Risks include:
+fire, explosion, severe burns, carbon monoxide poisoning, and toxic fumes.
+
+DO NOT attempt unless you are qualified and have done your own research
+to verify the safety of your construction and operating procedures.
+
+THE CREATOR OF THIS SCRIPT ACCEPTS NO RESPONSIBILITY FOR ANY INJURIES,
+DEATHS, PROPERTY DAMAGE, OR OTHER LOSSES RESULTING FROM USE OF THIS TOOL.
+USE ENTIRELY AT YOUR OWN RISK.
+"""
+
 def print_header():
     """Display application header."""
     print("=" * 70)
     print("   INTERACTIVE FORGE DESIGNER v1.0")
     print("   Ribbon Burner Forge Engineering Suite")
+    print("=" * 70)
+    print(SAFETY_DISCLAIMER)
     print("=" * 70)
     print()
 
@@ -963,7 +996,15 @@ def build_pdf(specs):
     story.append(Paragraph(f"<b>Chamber Volume:</b> {int(specs['internal_volume'])} cubic inches", styles['BodyText']))
     story.append(Paragraph(f"<b>Internal Dimensions:</b> {specs['internal_w']}\" × {specs['internal_h']}\" × {specs['internal_l']}\"", styles['BodyText']))
     story.append(Paragraph(f"<b>Estimated Cost:</b> ${specs['estimated_cost']}", styles['BodyText']))
-    story.append(Spacer(1, 0.5*inch))
+    story.append(Spacer(1, 0.2*inch))
+    
+    # Disclaimer on title page
+    story.append(Paragraph(
+        "<b>⚠️ WARNING:</b> Building and operating a forge is extremely dangerous. "
+        "The creator of this tool accepts no responsibility for injuries, death, or property damage. "
+        "Do not attempt unless qualified. See Safety section for full disclaimer.",
+        styles['WarningText']))
+    story.append(Spacer(1, 0.3*inch))
     story.append(draw_assembly_overview(specs))
     story.append(Spacer(1, 0.3*inch))
     story.append(Paragraph(f"<i>Generated: {specs['generated_date']}</i>", styles['BodyText']))
@@ -1008,12 +1049,23 @@ def build_pdf(specs):
     story.append(Paragraph("1. Safety Requirements & Warnings", styles['CustomHeading']))
     story.append(Spacer(1, 0.1*inch))
     
-    story.append(Paragraph("<b>⚠️ CRITICAL SAFETY INFORMATION</b>", styles['WarningText']))
+    story.append(Paragraph("<b>⚠️ DANGER - IMPORTANT SAFETY DISCLAIMER ⚠️</b>", styles['WarningText']))
     story.append(Paragraph(
-        "This forge operates with combustible gas at high temperatures. Improper construction "
-        "or operation can result in fire, explosion, severe burns, carbon monoxide poisoning, or death. "
-        "Read and understand ALL safety requirements before beginning construction.",
+        "<b>Building and operating a forced air ribbon burner forge is EXTREMELY DANGEROUS "
+        "and can result in serious injury or death.</b> Risks include but are not limited to: "
+        "fire, explosion, severe burns, carbon monoxide poisoning, and toxic fume exposure.",
         styles['BodyText']))
+    story.append(Spacer(1, 0.1*inch))
+    story.append(Paragraph(
+        "<b>DO NOT</b> attempt to build or operate a forge unless you are qualified, have done your own "
+        "independent research, and have verified the safety of your construction and operating procedures.",
+        styles['BodyText']))
+    story.append(Spacer(1, 0.1*inch))
+    story.append(Paragraph(
+        "<b>THE CREATOR OF THIS TOOL ACCEPTS NO RESPONSIBILITY</b> for any injuries, deaths, property damage, "
+        "or other losses resulting from the use of this tool or any forge built using information it provides. "
+        "<b>USE ENTIRELY AT YOUR OWN RISK.</b>",
+        styles['WarningText']))
     story.append(Spacer(1, 0.15*inch))
     
     story.append(Paragraph("<b>Required Safety Equipment:</b>", styles['CustomSubHeading']))

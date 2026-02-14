@@ -5,6 +5,13 @@ Interactive ribbon burner forge design application that generates comprehensive 
 
 ## Version History
 
+### v1.3 (2026-02-14)
+- Added comprehensive safety disclaimer to:
+  - README.md (bold warning at top)
+  - Script docstring and CLI output
+  - PDF title page and Safety section
+- Disclaimer covers liability, qualification requirements, and risks
+
 ### v1.2 (2026-02-14)
 - Added README.md with comprehensive documentation
 - Added cross-platform launcher scripts:

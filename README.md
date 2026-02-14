@@ -1,5 +1,15 @@
 # Forge Builder
 
+> **⚠️ DANGER - READ BEFORE USE ⚠️**
+>
+> **Building and operating a forced air ribbon burner forge is EXTREMELY DANGEROUS and can result in serious injury or death.** Risks include but are not limited to: fire, explosion, severe burns, carbon monoxide poisoning, and toxic fume exposure.
+>
+> **DO NOT attempt to build or operate a forge unless you are qualified, have done your own independent research, and have verified the safety of your construction and operating procedures.**
+>
+> **The creator of this script accepts NO RESPONSIBILITY for any injuries, deaths, property damage, or other losses resulting from the use of this tool or any forge built using information it provides. USE ENTIRELY AT YOUR OWN RISK.**
+
+---
+
 An interactive ribbon burner forge design tool that generates comprehensive PDF build guides based on your custom chamber dimensions.
 
 ## Overview
@@ -161,15 +171,6 @@ Enter your desired INTERNAL chamber dimensions.
 
 [SUCCESS] Build guide generated: Forge_Build_Guide_784ci.pdf
 ```
-
-## Safety Notice
-
-⚠️ **This forge operates with combustible gas at high temperatures.** Improper construction or operation can result in fire, explosion, severe burns, carbon monoxide poisoning, or death.
-
-- Always follow all safety procedures in the generated guide
-- Never operate indoors or in enclosed spaces
-- Leak test all gas connections before use
-- Keep a fire extinguisher within reach
 
 ## License
 
